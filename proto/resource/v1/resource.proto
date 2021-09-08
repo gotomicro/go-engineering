@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package resource.v1;
+
+option go_package = "resource/v1;resourcev1";
+option java_multiple_files = true;
+option java_outer_classname = "ResourceProto";
+option java_package = "pb.resource.v1";
+
+// 资源服务
+service Resource {
+  // 资源列表
+  rpc List(ListRequest) returns (ListResponse);
+  // 获取一篇文章详情
+  rpc Detail(DetailRequest) returns (DetailResponse);
+}
+
+// 列表请求参数
+message ListRequest {}
+
+// 列表响应参数
+message ListResponse {
+  repeated Info list = 1;
+}
+
+// 列表中一个信息
+message Info {
+  // 文章id
+  int64 id = 1;
+  // 文章标题
+  string title = 2;
+  // 作者名称
+  string nickname = 3;
+}
+
+// 文章详情请求参数
+message DetailRequest {
+  // 文章id
+  int64 id = 1;
+}
+
+// 文章详情响应参数
+message DetailResponse {
+  // 文章标题
+  string title = 1;
+  // 作者名称
+  string nickname = 2;
+  // 文章内容
+  string content = 3;
+}
