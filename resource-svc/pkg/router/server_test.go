@@ -28,7 +28,7 @@ network = "bufnet" # 使用bufnet模式的测试gRPC服务
 [mysql.resource]
 connMaxLifetime = "300s"
 debug = true
-dsn = "root:root@tcp(127.0.0.1:3306)/go-engineering?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
+dsn = "root:root@tcp(mysql:3306)/go-engineering?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
 maxIdleConns = 50
 maxOpenConns = 100
 `

@@ -1,0 +1,37 @@
+version: '3'
+
+networks:
+  integration-tests-example-test:
+    driver: bridge
+
+services:
+  listd_tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - $PWD:/go/src/go-engineering
+    depends_on:
+      - mysql
+    networks:
+      - integration-tests-example-test
+    links:
+      - mysql
+  mysql:
+    image: mysql:5.7.30
+#    ports:
+#      - "3306:3306"
+#    expose:
+#      - "23306"
+    command:
+      --lower_case_table_names=1
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: go-engineering
+    restart: on-failure
+    networks:
+      - integration-tests-example-test
