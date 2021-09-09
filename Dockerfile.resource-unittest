@@ -1,0 +1,11 @@
+FROM golang:1.16-alpine
+ENV GO111MODULE=on
+ENV GOPROXY=https://goproxy.cn,direct
+
+# Set working directory
+WORKDIR /data
+ADD . /data
+# Run tests
+CMD go run resource-svc/main.go --job=install --config=resource-svc/config/docker.toml && \
+    go run resource-svc/main.go --job=initialize --config=resource-svc/config/docker.toml && \
+    CGO_ENABLED=0 go test ./resource-svc/...

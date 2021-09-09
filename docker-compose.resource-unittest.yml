@@ -8,9 +8,7 @@ services:
   listd_tests:
     build:
       context: .
-      dockerfile: Dockerfile.test
-    volumes:
-      - $PWD:/go/src/go-engineering
+      dockerfile: Dockerfile.resource-unittest
     depends_on:
       - mysql
     networks:
@@ -18,16 +16,15 @@ services:
     links:
       - mysql
   mysql:
-    image: mysql:5.7.30
-#    ports:
-#      - "3306:3306"
-#    expose:
-#      - "23306"
-    command:
-      --lower_case_table_names=1
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_general_ci
-      --explicit_defaults_for_timestamp=true
+    image: mysql:5.7.24
+    ports:
+      - "23306:3306"
+    expose:
+      - "23306"
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_general_ci',
+    ]
     environment:
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root

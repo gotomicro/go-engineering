@@ -26,4 +26,13 @@ add prototool.yaml
 
 
 ## Go语言中的集成测试
+在自己的本地环境，如何跑集成测试的单元测试用例
+### Resource服务
+跑测试用例
+* 清除测试缓存 docker-compose -f docker-compose.resource-unittest.yml rm -v
+* 跑测试用例 docker-compose -f docker-compose.resource-unittest.yml up --build --abort-on-container-exit
+![img.png](images/resouce-unittest.png)
+
+### API服务
+
 * https://www.ardanlabs.com/blog/2019/03/integration-testing-in-go-executing-tests-with-docker.html
