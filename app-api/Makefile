@@ -7,10 +7,6 @@ go:export EGO_DEBUG=true
 go:export EGO_LOG_EXTRA_KEYS=X-Ego-Uid
 go:
 	@cd $(APP_PATH) && go run main.go --config=config/local.toml
-install:export EGO_DEBUG=true
-install:
-	@cd $(APP_PATH) && go run main.go --config=config/local.toml --job=install
-
 
 build:
 	@echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>making build app<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"

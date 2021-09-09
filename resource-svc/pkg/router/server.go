@@ -12,9 +12,9 @@ import (
 )
 
 func Server() *egrpc.Component {
-	svc := &resourceGrpcServer{}
-	resourcev1.RegisterResourceServer(invoker.GRPCServer, svc)
-	return invoker.GRPCServer
+	GRPCServer := egrpc.Load("server.grpc").Build()
+	resourcev1.RegisterResourceServer(GRPCServer, &resourceGrpcServer{})
+	return GRPCServer
 }
 
 type resourceGrpcServer struct {

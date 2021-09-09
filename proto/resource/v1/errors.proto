@@ -8,7 +8,7 @@ option java_outer_classname = "ErrorsProto";
 option java_package = "pb.resource.v1";
 
 // 错误
-enum UserErr {
+enum Error {
   // 未知类型
   // @code=UNKNOWN
   RESOURCE_ERR_UNKNOWN = 0;

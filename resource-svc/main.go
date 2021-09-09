@@ -16,6 +16,7 @@ func main() {
 		).
 		Job(
 			ejob.Job("install", job.InstallComponent),
+			ejob.Job("initialize", job.InitializeComponent),
 		).
 		Serve(
 			router.Server(),

@@ -5,11 +5,11 @@
 * 单元测试
 * 监控
 * protobuf
+* 错误码  
 * docker compose
 * unix domain socket
 
 # 获取用户信息
-首页显示github列表
 
 # proto指令
 ```bash

@@ -20,3 +20,13 @@ func InstallComponent(ctx ejob.Context) error {
 	fmt.Println("create table ok")
 	return nil
 }
+
+func InitializeComponent(ctx ejob.Context) error {
+	create := mysql.Resource{
+		Id:       1,
+		Title:    "测试文章",
+		Nickname: "ego",
+		Content:  "测试文章内容",
+	}
+	return invoker.Db.Create(&create).Error
+}

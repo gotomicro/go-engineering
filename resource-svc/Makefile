@@ -11,6 +11,10 @@ install:export EGO_DEBUG=true
 install:
 	@cd $(APP_PATH) && go run main.go --config=config/local.toml --job=install
 
+initialize:export EGO_DEBUG=true
+initialize:
+	@cd $(APP_PATH) && go run main.go --config=config/local.toml --job=initialize
+
 
 build:
 	@echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>making build app<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"

@@ -1,7 +1,6 @@
 package router
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,14 +26,12 @@ func MockLogin() gin.HandlerFunc {
 		// 设置链路uid，在远程调用中传递uid信息
 		parentContext := transport.WithValue(c.Request.Context(), "X-Ego-Uid", 9527)
 		c.Request = c.Request.WithContext(parentContext)
-		fmt.Printf("	c.Request --------------->"+"%+v\n", transport.Value(c.Request.Context(), "X-Ego-Uid"))
 		c.Set("X-Ego-Uid", 9527)
 		c.Next()
 	}
 }
 
 func helloEgo(ctx *gin.Context) {
-	fmt.Printf("transport.CustomContextKeys()--------------->"+"%+v\n", transport.CustomContextKeys())
 	ctx.String(http.StatusOK, "hello ego")
 }
 

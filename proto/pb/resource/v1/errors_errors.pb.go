@@ -17,13 +17,13 @@ var resourceErrListMysql *eerrors.EgoError
 var resourceErrInfoMysql *eerrors.EgoError
 
 func init() {
-	resourceErrUnknown = eerrors.New(int(codes.Unknown), "resource.v1.RESOURCE_ERR_UNKNOWN", UserErr_RESOURCE_ERR_UNKNOWN.String())
+	resourceErrUnknown = eerrors.New(int(codes.Unknown), "resource.v1.RESOURCE_ERR_UNKNOWN", Error_RESOURCE_ERR_UNKNOWN.String())
 	eerrors.Register(resourceErrUnknown)
-	resourceErrNotFound = eerrors.New(int(codes.NotFound), "resource.v1.RESOURCE_ERR_NOT_FOUND", UserErr_RESOURCE_ERR_NOT_FOUND.String())
+	resourceErrNotFound = eerrors.New(int(codes.NotFound), "resource.v1.RESOURCE_ERR_NOT_FOUND", Error_RESOURCE_ERR_NOT_FOUND.String())
 	eerrors.Register(resourceErrNotFound)
-	resourceErrListMysql = eerrors.New(int(codes.Internal), "resource.v1.RESOURCE_ERR_LIST_MYSQL", UserErr_RESOURCE_ERR_LIST_MYSQL.String())
+	resourceErrListMysql = eerrors.New(int(codes.Internal), "resource.v1.RESOURCE_ERR_LIST_MYSQL", Error_RESOURCE_ERR_LIST_MYSQL.String())
 	eerrors.Register(resourceErrListMysql)
-	resourceErrInfoMysql = eerrors.New(int(codes.Internal), "resource.v1.RESOURCE_ERR_INFO_MYSQL", UserErr_RESOURCE_ERR_INFO_MYSQL.String())
+	resourceErrInfoMysql = eerrors.New(int(codes.Internal), "resource.v1.RESOURCE_ERR_INFO_MYSQL", Error_RESOURCE_ERR_INFO_MYSQL.String())
 	eerrors.Register(resourceErrInfoMysql)
 }
 
