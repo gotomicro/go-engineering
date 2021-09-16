@@ -2,6 +2,8 @@ package router
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"log"
 	"net"
 	"strings"
@@ -17,6 +19,7 @@ import (
 	"go-engineering/resource-svc/pkg/invoker"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/test/bufconn"
+	"google.golang.org/protobuf/proto"
 )
 
 var svc *egrpc.Component
@@ -28,7 +31,8 @@ network = "bufnet" # 使用bufnet模式的测试gRPC服务
 [mysql.resource]
 connMaxLifetime = "300s"
 debug = true
-dsn = "root:root@tcp(mysql:3306)/go-engineering?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
+#dsn = "root:root@tcp(mysql:3306)/go-engineering?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
+dsn = "root:root@tcp(127.0.0.1:23306)/go-engineering?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
 maxIdleConns = 50
 maxOpenConns = 100
 `
@@ -60,7 +64,6 @@ maxOpenConns = 100
 }
 
 func bufDialer(context.Context, string) (net.Conn, error) {
-	// 从测试gRPC服务获得listener
 	return svc.Listener().(*bufconn.Listener).Dial()
 }
 
@@ -69,10 +72,17 @@ func TestList(t *testing.T) {
 	ctx := context.Background()
 	client := resourcev1.NewResourceClient(resourceClient.ClientConn)
 	resp, err := client.List(ctx, &resourcev1.ListRequest{})
+	want := &resourcev1.ListResponse{
+		List: []*resourcev1.Info{
+			{
+				Id:       1,
+				Title:    "测试文章",
+				Nickname: "ego",
+			},
+		},
+	}
 	assert.NoError(t, err)
-	assert.Equal(t, int64(1), resp.List[0].Id)
-	assert.Equal(t, "测试文章", resp.List[0].Title)
-	assert.Equal(t, "ego", resp.List[0].Nickname)
+	assert.True(t, proto.Equal(want, resp))
 	log.Printf("Response: %+v", resp)
 }
 
@@ -84,9 +94,12 @@ func TestDetailOK(t *testing.T) {
 		Id: 1,
 	})
 	assert.NoError(t, err)
-	assert.Equal(t, "测试文章", resp.Title)
-	assert.Equal(t, "ego", resp.Nickname)
-	assert.Equal(t, "测试文章内容", resp.Content)
+	want := &resourcev1.DetailResponse{
+		Title:    "测试文章",
+		Nickname: "ego",
+		Content:  "测试文章内容",
+	}
+	assert.True(t, proto.Equal(want, resp))
 	log.Printf("Response: %+v", resp)
 }
 

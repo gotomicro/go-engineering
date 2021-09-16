@@ -34,7 +34,6 @@ func (m *HTTPMock) MockPost(uri string, param []byte) (*http.Response, error) {
 
 	// 初始化响应
 	w := httptest.NewRecorder()
-
 	// 调用相应handler接口
 	m.ServeHTTP(w, req)
 

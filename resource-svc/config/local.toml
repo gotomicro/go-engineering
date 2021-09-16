@@ -3,6 +3,6 @@ port = 9001
 [mysql.resource]
 connMaxLifetime = "300s"
 debug = true
-dsn = "root:root@tcp(127.0.0.1:3306)/go-engineering?charset=utf8&collation=utf8_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
+dsn = "root:root@tcp(127.0.0.1:23306)/go-engineering?charset=utf8&collation=utf8_general_ci&parseTime=True&loc=Local&timeout=1s&readTimeout=3s&writeTimeout=3s"
 maxIdleConns = 50
 maxOpenConns = 100

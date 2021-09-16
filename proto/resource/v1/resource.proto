@@ -7,6 +7,9 @@ option java_multiple_files = true;
 option java_outer_classname = "ResourceProto";
 option java_package = "pb.resource.v1";
 
+import "protoenum/v1/protoenum.proto";
+
+
 // 资源服务
 service Resource {
   // 资源列表
@@ -31,6 +34,8 @@ message Info {
   string title = 2;
   // 作者名称
   string nickname = 3;
+
+  protoenum.v1.BizType  bizType = 5;
 }
 
 // 文章详情请求参数

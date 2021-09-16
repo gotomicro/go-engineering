@@ -1,0 +1,11 @@
+syntax = "proto3";
+package protoenum.v1;
+
+option go_package = "protoenum/v1;protoenumv1";
+
+
+enum BizType {
+  UNKNOWN = 0;
+  VIDEO = 1;
+  PPT = 2;
+}

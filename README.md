@@ -10,7 +10,6 @@
 * unix domain socket
 
 # 获取用户信息
-
 # proto指令
 ```bash
 cd proto
@@ -31,6 +30,7 @@ add prototool.yaml
 跑测试用例
 * 清除测试缓存 docker-compose -f docker-compose.resource-unittest.yml rm -v
 * 跑测试用例 docker-compose -f docker-compose.resource-unittest.yml up --build --abort-on-container-exit
+* 跑数据库 docker-compose -f docker-compose.resource-unittest.yml up --build mysql
 ![img.png](images/resouce-unittest.png)
 
 ### API服务

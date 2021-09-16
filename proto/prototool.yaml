@@ -92,7 +92,7 @@ lint:
 
 generate:
   go_options:
-    import_path: github.com/gotomicro/go-engineering
+    import_path: go-engineering/proto
   plugins:
     - name: go
       type: go
