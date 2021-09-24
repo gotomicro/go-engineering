@@ -20,3 +20,6 @@ build:
 	@echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>making build app<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	@chmod +x $(SCRIPT_PATH)/build/*.sh
 	@cd $(APP_PATH) && $(SCRIPT_PATH)/build/gobuild.sh $(APP_NAME) $(COMPILE_OUT)
+
+gen-test:
+	@protoc --proto_path=../proto  --go-test_out=mod=go-engineering/proto/pb,out=./pkg/router,paths=source_relative:. ../proto/resource/v1/*.proto
