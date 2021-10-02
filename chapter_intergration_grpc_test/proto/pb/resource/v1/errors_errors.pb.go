@@ -3,8 +3,8 @@
 package resourcev1
 
 import (
-	eerrors "github.com/gotomicro/ego/core/eerrors"
-	codes "google.golang.org/grpc/codes"
+	"github.com/gotomicro/ego/core/eerrors"
+	"google.golang.org/grpc/codes"
 )
 
 // This is a compile-time assertion to ensure that this generated file

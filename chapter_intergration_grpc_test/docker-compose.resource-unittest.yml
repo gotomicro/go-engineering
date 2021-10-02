@@ -7,7 +7,7 @@ networks:
 services:
   listd_tests:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile.resource-unittest
     depends_on:
       - mysql
