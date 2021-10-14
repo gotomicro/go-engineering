@@ -21,6 +21,7 @@ bash <(curl -L https://raw.githubusercontent.com/gotomicro/egoctl/main/getlatest
 ```bash
 make link
 ```
+
 ![img.png](images/link.png)
 
 ## 生成PB文件
@@ -29,6 +30,7 @@ make link
 make gen-proto
 ```
 执行完后，你可以看到三种插件生成的PB代码。
+
 ![img.png](images/pb_plugin.png)
 
 
@@ -37,6 +39,7 @@ make gen-proto
 ```bash
 make gen-test
 ```
+
 ![img.png](images/test.png)
 
 * 初始化test文件的init函数
@@ -74,4 +77,5 @@ func init() {
 你需要在配置里指定`gRPC`服务使用`bufnet`模式启动。
 
 * 编写单元测试逻辑
+
 ![img.png](testinfo.png)
