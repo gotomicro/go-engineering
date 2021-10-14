@@ -15,8 +15,8 @@ build:
 	@echo -e "\n"
 
 
-link-askuy:export PROTO_DIR=/Users/askuy/code/github/gotomicro/go-engineering/chapter_proto
-link-askuy:
+link:export PROTO_DIR=../chapter_proto
+link:
 	@echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>make $@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	@ if [[ ! -L $(APP_PATH)/$(PROTO) ]]; then ln -s $(PROTO_DIR) $(APP_PATH)/$(PROTO); echo "link created"; else echo "link exists"; fi;
 
