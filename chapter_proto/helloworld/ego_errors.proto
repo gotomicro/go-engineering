@@ -1,7 +1,6 @@
 syntax = "proto3";
 
-package engineering.helloworld;
-
+package helloworld;
 option go_package = "egounittest/protos/helloworld";
 
 // @plugins=protoc-gen-go-errors
@@ -20,3 +19,4 @@ enum Error {
   // @code=INTERNAL
   RESOURCE_ERR_INFO_MYSQL = 3;
 }
+
