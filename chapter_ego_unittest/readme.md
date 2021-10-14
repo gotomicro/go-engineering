@@ -78,4 +78,4 @@ func init() {
 
 * 编写单元测试逻辑
 
-![img.png](testinfo.png)
+![img.png](images/testinfo.png)
