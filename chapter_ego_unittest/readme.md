@@ -79,3 +79,9 @@ func init() {
 * 编写单元测试逻辑
 
 ![img.png](images/testinfo.png)
+
+* 执行单测
+```bash
+go test ./...
+```
+![img.png](images/gotest.png)
