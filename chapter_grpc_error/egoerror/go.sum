@@ -256,6 +256,8 @@ github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0U
 github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/gotomicro/ego v0.6.13 h1:/bH/6F6qB020eHgC2ZPekNG3vl9ETUIEC1YPY+jDyz4=
 github.com/gotomicro/ego v0.6.13/go.mod h1:J7T3MheaDPruqZXBXYzhYp1RQdpsHbMNste5gT9QDcM=
+github.com/gotomicro/ego v0.6.16 h1:hOS0aBZno4O80m5notbZckBJfeIuPeANjO/b0k8wxdg=
+github.com/gotomicro/ego v0.6.16/go.mod h1:M9cmJ6sum7GP0IQ25MxATQjVEYObgam6SS82wp/g7C4=
 github.com/gotomicro/ego v0.6.17-0.20211109060137-670c91f52f1b h1:n91eRuMIcsLe56UggYrdClBiYOZoWBiT2TAi6ZCXdYY=
 github.com/gotomicro/ego v0.6.17-0.20211109060137-670c91f52f1b/go.mod h1:2rt07SDrJILDUtMhrgriVXyNpzAq9BtiL9gS1WXSITk=
 github.com/gotomicro/logrotate v0.0.0-20211108024517-45d1f9a03ff5 h1:y9nw0S0zlla/SBt1GGaTNNCF+781epJ62MntVVbekqQ=

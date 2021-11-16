@@ -2,10 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
-
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
 
 	"github.com/gotomicro/ego"
 	"github.com/gotomicro/ego/core/elog"
@@ -34,15 +30,10 @@ type Greeter struct {
 // SayHello ...
 func (g Greeter) SayHello(context context.Context, request *helloworld.HelloRequest) (*helloworld.HelloResponse, error) {
 	if request.Name == "error" {
-		return nil, helloworld.ResourceErrNotFound().WithMessage("sayhello err").WithMetadata(map[string]string{
+		return nil, helloworld.ResourceErrNotFound().WithMessage("i am err").WithMetadata(map[string]string{
 			"ego1": "haha",
 			"ego2": "wawa",
 		})
-	}
-	header := metadata.Pairs("x-header-key", "val")
-	err := grpc.SendHeader(context, header)
-	if err != nil {
-		return nil, fmt.Errorf("set header fail, %w", err)
 	}
 	return &helloworld.HelloResponse{
 		Message: "Hello EGO, I'm " + g.server.Address(),

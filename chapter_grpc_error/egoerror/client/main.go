@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	"github.com/gotomicro/ego"
 	"github.com/gotomicro/ego/client/egrpc"
@@ -37,13 +36,13 @@ func callGrpc() error {
 		egoErr := eerrors.FromError(err)
 		// egoErr.Is(helloworld.ResourceErrNotFound()) 一样的
 		if errors.Is(egoErr, helloworld.ResourceErrNotFound()) {
-			fmt.Println("i am 404 not found")
+			// 你的业务处理逻辑
+			elog.Warn("404 not found", elog.Any("code", egoErr.GetCode()), elog.Any("message", egoErr.GetMessage()), elog.Any("metadata", egoErr.GetMetadata()))
 			return nil
+		} else {
+			elog.Error(err.Error(), elog.Any("code", egoErr.GetCode()), elog.Any("message", egoErr.GetMessage()), elog.Any("metadata", egoErr.GetMetadata()))
+			return err
 		}
-	}
-
-	if err != nil {
-		return err
 	}
 	return nil
 }
