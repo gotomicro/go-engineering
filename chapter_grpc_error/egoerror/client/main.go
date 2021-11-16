@@ -2,11 +2,14 @@ package main
 
 import (
 	"context"
+	"errors"
+	"fmt"
 
 	"github.com/gotomicro/ego"
 	"github.com/gotomicro/ego/client/egrpc"
+	"github.com/gotomicro/ego/core/eerrors"
 	"github.com/gotomicro/ego/core/elog"
-	"github.com/gotomicro/ego/examples/helloworld"
+	"go-engineering/helloworld"
 )
 
 func main() {
@@ -30,6 +33,15 @@ func callGrpc() error {
 	_, err := grpcComp.SayHello(context.Background(), &helloworld.HelloRequest{
 		Name: "error",
 	})
+	if err != nil {
+		egoErr := eerrors.FromError(err)
+		// egoErr.Is(helloworld.ResourceErrNotFound()) 一样的
+		if errors.Is(egoErr, helloworld.ResourceErrNotFound()) {
+			fmt.Println("i am 404 not found")
+			return nil
+		}
+	}
+
 	if err != nil {
 		return err
 	}
